@@ -40,10 +40,22 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
  }
--- Lualine information / Status bar
+-- User interface
  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+      "stevearc/dressing.nvim",
+      event = "BufEnter",
+      config = function()
+        require("dressing").setup {
+          select = {
+            backend = { "telescope", "fzf", "builtin" },
+          },
+        }
+      end,
  }
+ use {
+	'akinsho/bufferline.nvim', tag = "v3.*", 
+         requires = {{ 'nvim-tree/nvim-web-devicons'} }
+ }
+
 end)
 
