@@ -74,6 +74,12 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["browse.nvim"] = {
+    loaded = true,
+    needs_bufread = false,
+    path = "/root/.local/share/nvim/site/pack/packer/opt/browse.nvim",
+    url = "https://github.com/lalitmee/browse.nvim"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
@@ -182,6 +188,17 @@ _G.packer_plugins = {
     path = "/root/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-quickrun"] = {
+    loaded = true,
+    needs_bufread = false,
+    path = "/root/.local/share/nvim/site/pack/packer/opt/vim-quickrun",
+    url = "https://github.com/thinca/vim-quickrun"
+  },
+  ["vim-quickrun-neovim-job"] = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/vim-quickrun-neovim-job",
+    url = "https://github.com/lambdalisue/vim-quickrun-neovim-job"
+  },
   ["vim-vsnip"] = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/vim-vsnip",
@@ -190,6 +207,20 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Setup for: vim-quickrun
+time([[Setup for vim-quickrun]], true)
+try_loadstring("\27LJ\2\n–\3\0\0\6\0\20\0\0286\0\0\0009\0\1\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0=\2\a\0015\2\b\0=\2\t\0015\2\n\0=\2\v\1=\1\2\0006\0\0\0009\0\f\0009\0\r\0'\2\14\0'\3\15\0'\4\16\0B\0\4\0016\0\0\0009\0\f\0009\0\r\0'\2\14\0'\3\17\0'\4\18\0005\5\19\0B\0\5\1K\0\1\0\1\0\1\vsilent\2\18:QuickRun<CR>\15<leader>rr\n<Nop>\14<leader>r\6n\bset\vkeymap\trust\1\0\1\texec\14cargo run\fdocview\1\0\2\texec\19%c %S:t:r.html\fcommand\rxdg-open\vdocgen\1\0\2\texec\n%c %s\fcommand\16asciidoctor\6_\1\0\0\1\0\3\vrunner\15neovim_job$outputter/buffer/close_on_empty\3\1\28outputter/buffer/opener\bnew\20quickrun_config\6g\bvim\0", "setup", "vim-quickrun")
+time([[Setup for vim-quickrun]], false)
+time([[packadd for vim-quickrun]], true)
+vim.cmd [[packadd vim-quickrun]]
+time([[packadd for vim-quickrun]], false)
+-- Setup for: browse.nvim
+time([[Setup for browse.nvim]], true)
+try_loadstring("\27LJ\2\nG\0\0\4\0\4\0\t6\0\0\0'\2\1\0B\0\2\0029\0\1\0005\2\2\0006\3\3\0=\3\3\2B\0\2\1K\0\1\0\14bookmarks\1\0\0\vbrowse\frequireC\1\0\5\0\6\0\b6\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0003\4\5\0B\0\4\1K\0\1\0\0\14<leader>b\6n\bset\vkeymap\bvim\0", "setup", "browse.nvim")
+time([[Setup for browse.nvim]], false)
+time([[packadd for browse.nvim]], true)
+vim.cmd [[packadd browse.nvim]]
+time([[packadd for browse.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
