@@ -38,15 +38,15 @@ packer.init({
         },
 })
 
-
 return require('packer').startup(function(use)
  -- Configurations will go here
  use 'wbthomason/packer.nvim'
  use 'williamboman/mason.nvim'
  use 'williamboman/mason-lspconfig.nvim'
  use 'neovim/nvim-lspconfig'
- -- Hrsh7th Code Completion Suite
-     use 'hrsh7th/nvim-cmp' 
+
+
+     use 'hrsh7th/nvim-cmp'
      use 'hrsh7th/cmp-nvim-lsp'
      use 'hrsh7th/cmp-nvim-lua'
      use 'hrsh7th/cmp-nvim-lsp-signature-help'
@@ -69,10 +69,16 @@ return require('packer').startup(function(use)
  use {
   -- recommended packer way of installing it is to run this function, copied from documentation
          'nvim-treesitter/nvim-treesitter',
-      run = function()
+         run = function()
               local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
               ts_update()
          end,
+	 config = function()
+             require("config.treesitter").setup()
+         end,
+         requires = {
+           { "nvim-treesitter/nvim-treesitter-textobjects" },
+         },
 
   }
 
@@ -136,5 +142,14 @@ return require('packer').startup(function(use)
           end,
   }
 
+   -- Auto pairs
+    use {
+      "windwp/nvim-autopairs",
+      wants = "nvim-treesitter",
+      module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
+      config = function()
+        require("config.autopairs").setup()
+      end,
+    }
 end)
 
